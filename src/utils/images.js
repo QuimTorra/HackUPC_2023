@@ -1,0 +1,1 @@
+export const bizzum_img = require('./img/bizzumIcon.png');
