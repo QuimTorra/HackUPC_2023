@@ -1,10 +1,10 @@
-import { Text } from "react-native";
 import Pantalla from "../components/Pantalla";
+import Grafiques from "../components/Grafiques";
 
 export default function Compte({ navigation }, props) {
   return (
     <Pantalla>
-      <Text>Compte</Text>
+      <Grafiques></Grafiques>
     </Pantalla>
   );
 }

@@ -3,9 +3,6 @@ import React from 'react';
 
 export default function TransactionRow(props) {
 
-    
-
-
     return (
         <View style={{
                 marginVertical: 8,
@@ -13,6 +10,8 @@ export default function TransactionRow(props) {
             }}
         >
             <Text>{props.name}</Text>
+            <Text>{props.date}</Text>
+            <Text>{props.cost}</Text>
         </View>
     );
 }
