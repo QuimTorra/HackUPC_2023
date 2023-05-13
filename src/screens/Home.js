@@ -3,6 +3,7 @@ import Pantalla from "../components/Pantalla";
 import TopBar from "../components/TopBar";
 import NavButton from "../components/NavButton";
 import Grafiques from "../components/Grafiques";
+import { bizzum_img } from "../utils/images";
 
 export default function Home({ navigation }, props) {
   return (
@@ -10,7 +11,7 @@ export default function Home({ navigation }, props) {
       <TopBar />
       <Text>Home</Text>
       <NavButton 
-          img_src={require('../../assets/bizzumIcon.png')}
+          icon_src={bizzum_img}
           onPress={() => navigation.navigate("Bizum")}
       />
       <Grafiques></Grafiques>
