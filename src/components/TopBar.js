@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useState } from "react";
-import getUser from "../utils/api";
+import { getUser } from "../utils/api";
 import Constants from "expo-constants";
 import { colors } from "../utils/colors";
 
