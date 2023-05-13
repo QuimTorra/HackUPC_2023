@@ -1,16 +1,11 @@
 import { Button, Text } from "react-native";
 import Pantalla from "../components/Pantalla";
+import TopBar from "../components/TopBar";
 
 export default function Home({ navigation }, props) {
   return (
     <Pantalla>
-      <Text>Home</Text>
-      <Button
-        onPress={() => {
-          navigation.navigate("Bizum");
-        }}
-        title="Fer un Bizum"
-      />
+      <TopBar />
     </Pantalla>
   );
 }

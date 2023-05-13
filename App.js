@@ -10,7 +10,6 @@ import Constants from "expo-constants";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  console.log(Constants.expoConfig.extra.apiKey);
   return (
     <NavigationContainer>
       <Stack.Navigator
