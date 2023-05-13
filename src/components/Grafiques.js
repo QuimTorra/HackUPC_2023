@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView, StyleSheet} from "react-native";
 import React, { useState, useEffect} from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { Dimensions } from 'react-native';
 import TransactionRow from "./TransactionRow";
+import Constants from "expo-constants";
+import { colors } from "../utils/colors";
 
 export default function Grafiques() {
 
-    const [transations, setTransations] = useState([{nom: '', date: '', cost: 0}]);
+    const [info, setInfo] = useState([]);
 
     useEffect( () => {
-        async function a() {
+        const a = async() => {
             let result = await fetch('https://int.strandscloud.com/fs-api/transactions?recoverHeatLevel=false&page=0&size=50&sort=DATE_DESC&applyToSplits=false', {
             method: "GET",
                 headers: {
@@ -20,7 +22,7 @@ export default function Grafiques() {
             });
             let data = await result.json();
             console.log("data: ", data);
-            //setTransations(data);
+            setInfo(data.transactions);
         }
         a();
     }, []);
@@ -29,26 +31,36 @@ export default function Grafiques() {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
         datasets: [
             {
-              data: [20, 45, 25, 60, 70, 40],
+              data: [2, 4.5, 2.5, 6.0, 7.0, 4.0],
             },
         ],
     };
 
 
     return (
-        <View>
-            <Text>
-                General information
-            </Text>
+        <View style={{flex:1}}>
+            <View style={{
+                height: 40, 
+                backgroundColor: `${colors.main}`, 
+                alignItems: 'center', 
+                borderBottomColor: 'black', 
+                borderBottomWidth: 2, 
+                borderBottomLeftRadius: 15, 
+                borderBottomRightRadius: 15
+                }}>
+                <Text style={{fontSize: 20}}>
+                    General information
+                </Text>
+            </View>
             <LineChart
                 data={data}
-                width={Dimensions.get('window').width} // from react-native
+                width={Dimensions.get('window').width-20} // from react-native
                 height={220}
                 yAxisLabel="$"
                 yAxisSuffix="k"
                 chartConfig={{
-                    backgroundColor: '#e26a00',
-                    backgroundGradientFrom: '#fb8c00',
+                    backgroundColor: `${colors.main}`,
+                    backgroundGradientFrom: `${colors.main}`,
                     backgroundGradientTo: '#ffa726',
                     decimalPlaces: 2, // optional, defaults to 2dp
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -64,22 +76,36 @@ export default function Grafiques() {
                 }}
                 bezier
                 style={{
+                    marginHorizontal: 10,
                     marginVertical: 8,
                     borderRadius: 16,
                 }}
             />
-
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
+            >
             {
-                transations.map((transaction) => {
+                info.map((transaction, i) => {
                     return (
                         <TransactionRow 
-                            nom={transaction.nom} 
+                            key={i}
+                            nom={transaction.name} 
                             date={transaction.date} 
-                            cost={transaction.cost}>
+                            cost={transaction.amount.amount}
+                            currency={transaction.amount.currency}
+                            >
                         </TransactionRow>
                     )
                 ;})
             }
+            </ScrollView>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    llistat: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+})
