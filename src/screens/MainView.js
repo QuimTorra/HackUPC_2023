@@ -8,8 +8,7 @@ export default function MainView() {
     return (
         <View>
             <Text>
-                Main view
-                <Grafiques>{aaa}</Grafiques>
+                <Grafiques></Grafiques>
             </Text>
         </View>
     );
