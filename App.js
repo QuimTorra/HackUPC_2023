@@ -5,10 +5,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/screens/Home";
 import Bizum from "./src/screens/Bizum";
 import Compte from "./src/screens/Compte";
+import Constants from "expo-constants";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  console.log(Constants.expoConfig.extra.apiKey);
   return (
     <NavigationContainer>
       <Stack.Navigator
