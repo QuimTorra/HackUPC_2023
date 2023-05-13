@@ -29,6 +29,7 @@ export default {
     extra: {
       apiKey: process.env.API_KEY,
       userToken: process.env.USER_TOKEN,
+      userId: process.env.USER_ID,
     },
   },
 };
