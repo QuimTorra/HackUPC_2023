@@ -17,7 +17,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="Datafon"
+        initialRouteName="Productes"
         activeColor={colors.accent}
         inactiveColor={colors.main}
         barStyle={{ backgroundColor: "tomato" }}
