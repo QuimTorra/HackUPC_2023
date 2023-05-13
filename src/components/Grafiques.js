@@ -1,9 +1,26 @@
 import { Text, View } from "react-native";
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { Dimensions } from 'react-native';
+import TransactionRow from "./TransactionRow";
 
 export default function Grafiques() {
+
+    const [transations, setTransations] = useState();
+
+    useEffect(async () => {
+        let result = await fetch('https://int.strandscloud.com/fs-api/transactions?recoverHeatLevel=false&page=0&size=50&sort=DATE_DESC&applyToSplits=false', {
+            method: "GET",
+            headers: {
+            accept: "application/json",
+            "x-api-key": Constants.expoConfig.extra.apiKey,
+            Authorization: "bearer " + Constants.expoConfig.extra.userToken,
+            },
+        });
+        let data = await result.json();
+        console.log("data: ", data);
+        setTransations(data);
+    }, []);
 
     const data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -45,6 +62,11 @@ export default function Grafiques() {
                     borderRadius: 16,
                 }}
             />
+            transactions.map((transaction) => {
+                <TransactionRow nom={transaction.nom} date={transaction.date} cost={transation.cost}>
+                </TransactionRow>
+            })
+           
         </View>
     );
 }
