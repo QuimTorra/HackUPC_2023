@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/screens/Home";
-import Bizum from "./src/screens/Bizum";
 import Compte from "./src/screens/Compte";
 import Constants from "expo-constants";
 
@@ -19,7 +18,6 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Bizum" component={Bizum} />
         <Stack.Screen name="Compte" component={Compte} />
       </Stack.Navigator>
     </NavigationContainer>
