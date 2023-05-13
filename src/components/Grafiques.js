@@ -34,6 +34,9 @@ export default function Grafiques() {
 
     return (
         <View>
+            <Text>
+                Grafiques
+            </Text>
             <LineChart
                 data={data}
                 width={Dimensions.get('window').width} // from react-native
