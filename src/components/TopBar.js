@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useState } from "react";
 import getUser from "../utils/api";
 import Constants from "expo-constants";
+import { colors } from "../utils/colors";
 
 export default function TopBar(props) {
   const [name, setName] = useState("user");
@@ -21,12 +22,17 @@ export default function TopBar(props) {
 
 const styles = StyleSheet.create({
   topbarContainer: {
-    margin: 10,
+    backgroundColor: colors.main,
+    padding: 15,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   textSmall: {
+    color: colors.text,
     fontStyle: "italic",
   },
   textName: {
+    color: colors.text,
     fontSize: 17,
     fontWeight: "bold",
   },
