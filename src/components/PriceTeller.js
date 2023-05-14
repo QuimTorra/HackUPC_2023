@@ -11,7 +11,7 @@ export default function PriceTeller({ total, onPress }) {
             activeOpacity={0.4}
             onPress={onPress}
           >
-            <Text style={styles.priceText}>{total} €</Text>
+            <Text style={styles.priceText}>{total.toFixed(2)} €</Text>
             <View style={styles.floatTextWrap}>
               <Text style={styles.floatText}>Click to Confirm</Text>
             </View>
@@ -19,7 +19,7 @@ export default function PriceTeller({ total, onPress }) {
         </>
       ) : (
         <View style={[styles.totalHolder, { borderColor: "gray" }]}>
-          <Text style={styles.placeholderText}>0.0 €</Text>
+          <Text style={styles.placeholderText}>0.00 €</Text>
         </View>
       )}
     </>

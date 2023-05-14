@@ -21,7 +21,7 @@ export default function Producte(props) {
       }}
     >
       <Text>{props.name}</Text>
-      <Text style={styles.priceTag}>{props.price} €</Text>
+      <Text style={styles.priceTag}>{props.price.toFixed(2)} €</Text>
       {count > 0 && (
         <View style={styles.countFloat}>
           <Text style={{ color: "white" }}>{count}</Text>

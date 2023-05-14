@@ -56,7 +56,7 @@ export default function Productes(props) {
       </ScrollView>
       <Modal visible={modalVisible} animationType="slide">
         <PayLoading
-          cost={total}
+          cost={total.toFixed(2)}
           onPress={() => {
             setModalVisible(!modalVisible);
           }}

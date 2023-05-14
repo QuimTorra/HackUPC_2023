@@ -77,7 +77,7 @@ export default function Datafon(props) {
       </View>
       <Modal visible={modalVisible} animationType="slide">
         <PayLoading
-          cost={parseFloat(printable)}
+          cost={parseFloat(printable).toFixed(2)}
           onPress={() => {
             setModalVisible(!modalVisible);
           }}
@@ -97,12 +97,15 @@ export default function Datafon(props) {
 const styles = StyleSheet.create({
   gridLayout: {
     flex: 3, // the number of columns you want to devide the screen into
+    marginTop: "auto",
+    marginBottom: "auto",
   },
   row: {
-    marginVertical: 15,
+    marginVertical: 10,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    marginHorizontal: 25,
+    justifyContent: "space-between",
   },
   closeModal: {
     backgroundColor: colors.red,
