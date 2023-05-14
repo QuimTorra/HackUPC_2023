@@ -9,7 +9,7 @@ const NumeralButton = ({ onPress, number, setColor = colors.main }) => {
       style={[styles.navbutton, { borderColor: setColor }]}
       activeOpacity={0.4}
     >
-      <Text style={styles.num_text}> {number} </Text>
+      <Text style={styles.num_text}>{number}</Text>
     </TouchableOpacity>
   );
 };
@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-    borderRadius: 30,
+    borderRadius: 10,
     width: 95,
     height: 95,
-    borderWidth: 3,
+    borderWidth: 1,
     marginHorizontal: 7,
   },
   num_text: {

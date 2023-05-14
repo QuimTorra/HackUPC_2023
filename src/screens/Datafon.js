@@ -6,6 +6,7 @@ import TitleBar from "../components/TitleBar";
 import PriceTeller from "../components/PriceTeller";
 import PayLoading from "../components/PayLoading";
 import { colors } from "../utils/colors";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function Datafon(props) {
   const decimalNow = useRef(false);
@@ -19,7 +20,8 @@ export default function Datafon(props) {
       else setPrice(price + newValue);
     } else {
       if (decimalPrice.length == 0) setDecimalPrice(newValue);
-      else if (decimalPrice.length == 1) setDecimalPrice(decimalPrice + newValue)
+      else if (decimalPrice.length == 1)
+        setDecimalPrice(decimalPrice + newValue);
       else setDecimalPrice(decimalPrice.slice(0, -1) + newValue);
     }
   }
@@ -34,7 +36,7 @@ export default function Datafon(props) {
       if (price.length > 1) setPrice(price.slice(0, -1));
       else if (price.length == 1 && price != "0") setPrice("0");
     } else {
-        setDecimalPrice(decimalPrice.slice(0, -1));
+      setDecimalPrice(decimalPrice.slice(0, -1));
     }
   }
 
@@ -43,7 +45,7 @@ export default function Datafon(props) {
 
   return (
     <Pantalla>
-      <TitleBar title="Payment Terminal" />
+      <TitleBar title="POS" />
       <PriceTeller
         total={parseFloat(printable)}
         onPress={() => setModalVisible(true)}
@@ -69,7 +71,13 @@ export default function Datafon(props) {
           <NumeralButton onPress={() => applyDecimal()} number={"."} />
           <NumeralButton
             onPress={() => deletePrevious()}
-            number={"<-"}
+            number={
+              <MaterialCommunityIcons
+                name="backspace"
+                color={"black"}
+                size={36}
+              />
+            }
             setColor={colors.red}
           />
         </Row>

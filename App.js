@@ -22,9 +22,10 @@ export default function App() {
           tabBarInactiveTintColor: "white",
           headerShown: false,
         }}
+        initialRouteName="Products"
       >
         <Tab.Screen
-          name="Pay"
+          name="POS"
           component={Datafon}
           options={{
             tabBarIcon: ({ color }) => (

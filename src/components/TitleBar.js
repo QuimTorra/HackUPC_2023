@@ -17,6 +17,15 @@ export default function TitleBar(props) {
       <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
         {props.title}
       </Text>
+      <View
+        style={{
+          position: "absolute",
+          right: 15,
+          top: 10,
+        }}
+      >
+        {props.children}
+      </View>
     </View>
   );
 }

@@ -28,7 +28,7 @@ export default function PriceTeller({ total, onPress }) {
 
 const styles = StyleSheet.create({
   placeholderText: {
-    fontSize: 25,
+    fontSize: 30,
     color: "gray",
     fontStyle: "italic",
     textAlign: "center",
@@ -43,9 +43,10 @@ const styles = StyleSheet.create({
   },
   priceText: {
     color: colors.main,
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 900,
     textAlign: "center",
+    transform: [{ scaleY: 1.2 }],
   },
   floatTextWrap: {
     position: "absolute",
