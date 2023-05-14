@@ -12,19 +12,19 @@ export default function Grafiques() {
   useEffect(() => {
     const a = async () => {
       let result = await fetch(
-        "https://int.strandscloud.com/fs-api/transactions?recoverHeatLevel=false&page=0&size=50&sort=DATE_DESC&applyToSplits=false",
+        "http://issuetrackerwazowski-env.eba-4em2umit.eu-west-3.elasticbeanstalk.com/api/transactions/",
         {
           method: "GET",
           headers: {
             accept: "application/json",
-            "x-api-key": Constants.expoConfig.extra.apiKey,
-            Authorization: "bearer " + Constants.expoConfig.extra.userToken,
+            // "x-api-key": Constants.expoConfig.extra.apiKey,
+            // Authorization: "bearer " + Constants.expoConfig.extra.userToken,
           },
         }
       );
       let data = await result.json();
       // console.log("data: ", data);
-      setInfo(data.transactions);
+      setInfo(data);
     };
     a();
   }, []);
@@ -44,7 +44,7 @@ export default function Grafiques() {
         data={data}
         width={Dimensions.get("window").width - 20} // from react-native
         height={220}
-        yAxisLabel="$"
+        yAxisLabel="€"
         yAxisSuffix="k"
         chartConfig={{
           backgroundColor: `${colors.main}`,
@@ -75,9 +75,9 @@ export default function Grafiques() {
             <TransactionRow
               key={i}
               nom={transaction.name}
-              date={transaction.date}
-              cost={transaction.amount.amount}
-              currency={transaction.amount.currency}
+              date={transaction.date_execution}
+              cost={transaction.amount}
+              currency={"€"}
             ></TransactionRow>
           );
         })}

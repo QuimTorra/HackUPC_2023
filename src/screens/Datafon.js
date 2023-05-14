@@ -88,6 +88,7 @@ export default function Datafon(props) {
           onPress={() => {
             setModalVisible(!modalVisible);
           }}
+          close={() => setModalVisible(false)}
         ></PayLoading>
         <TouchableOpacity
           style={styles.closeModal}
