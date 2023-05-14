@@ -5,7 +5,7 @@ import TitleBar from "../components/TitleBar";
 export default function Compte({ navigation }, props) {
   return (
     <Pantalla>
-      <TitleBar title="My Account" />
+      <TitleBar title="Account" />
       <Grafiques></Grafiques>
     </Pantalla>
   );

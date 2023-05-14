@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
   Pressable,
-  Modal
+  Modal,
 } from "react-native";
 import Pantalla from "../components/Pantalla";
 import { useState } from "react";
@@ -14,6 +14,7 @@ import Producte from "../components/Producte";
 import { colors } from "../utils/colors";
 import TitleBar from "../components/TitleBar";
 import PayLoading from "../components/PayLoading";
+import PriceTeller from "../components/PriceTeller";
 
 export default function Productes(props) {
   const [total, setTotal] = useState(0);
@@ -28,32 +29,16 @@ export default function Productes(props) {
 
   return (
     <Pantalla>
-      <TitleBar title="My Products" />
-      {total > 0 ? (
-        <>
-          <TouchableOpacity
-            style={[styles.totalHolder, { borderColor: colors.main }]}
-            activeOpacity={0.4}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={styles.priceText}>{total} €</Text>
-            <View style={styles.floatTextWrap}>
-              <Text style={styles.floatText}>Click to Confirm</Text>
-            </View>
-          </TouchableOpacity>
-        </>
-      ) : (
-        <View style={[styles.totalHolder, { borderColor: "gray" }]}>
-          <Text style={styles.placeholderText}>0.0 €</Text>
-        </View>
-      )}
+      <TitleBar title="Products" />
+
+      <PriceTeller total={total} onPress={() => setModalVisible(true)} />
 
       <ScrollView contentContainerStyle={styles.listContainer}>
         {prs.map((row, i) => (
           <View style={styles.row} key={i}>
             {row.map((col, j) => (
               <Producte
-              key={i+'.'+j}
+                key={i + "." + j}
                 price={col.price}
                 name={col.name}
                 onPress={() => {
@@ -70,10 +55,18 @@ export default function Productes(props) {
         ))}
       </ScrollView>
       <Modal visible={modalVisible} animationType="slide">
-        <PayLoading cost={total} onPress={() => {setModalVisible(!modalVisible)}}>
-        </PayLoading>
-        <TouchableOpacity style={styles.closeModal} onPress={() => setModalVisible(false)} activeOpacity={0.4}>
-            <Text style={{color: 'white'}}>cancel operation</Text>
+        <PayLoading
+          cost={total}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        ></PayLoading>
+        <TouchableOpacity
+          style={styles.closeModal}
+          onPress={() => setModalVisible(false)}
+          activeOpacity={0.4}
+        >
+          <Text style={{ color: "white" }}>cancel operation</Text>
         </TouchableOpacity>
       </Modal>
     </Pantalla>
@@ -88,40 +81,6 @@ const styles = StyleSheet.create({
 
     gap: 9,
   },
-  placeholderText: {
-    fontSize: 25,
-    color: "gray",
-    fontStyle: "italic",
-    textAlign: "center",
-  },
-  totalHolder: {
-    padding: 10,
-    paddingVertical: 20,
-    borderWidth: 3,
-    borderRadius: 10,
-    marginHorizontal: 25,
-    marginVertical: 15,
-  },
-  priceText: {
-    color: colors.main,
-    fontSize: 25,
-    fontWeight: 900,
-    textAlign: "center",
-  },
-  floatTextWrap: {
-    position: "absolute",
-    top: -10,
-    left: 0,
-    right: 0,
-    alignItems: "center",
-  },
-  floatText: {
-    color: "white",
-    backgroundColor: colors.main,
-    paddingHorizontal: 15,
-    fontStyle: "italic",
-    borderRadius: 5,
-  },
   row: {
     display: "flex",
     flexDirection: "row",
@@ -129,21 +88,21 @@ const styles = StyleSheet.create({
     gap: 9,
   },
   clearAll: {
-    backgroundColor: "red",
+    backgroundColor: colors.red,
     padding: 10,
     alignSelf: "flex-start",
     marginHorizontal: 25,
     borderRadius: 10,
   },
   closeModal: {
-    backgroundColor: 'red',
-    alignSelf: 'flex-start',
+    backgroundColor: colors.red,
+    alignSelf: "flex-start",
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
-    position: 'absolute',
-    bottom:0,
+    position: "absolute",
+    bottom: 0,
     marginBottom: 20,
-    marginLeft: 20
-  }
+    marginLeft: 20,
+  },
 });

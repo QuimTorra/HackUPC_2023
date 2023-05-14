@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+} from "react-native";
 import { colors } from "../utils/colors";
 import { useState } from "react";
 
@@ -46,6 +52,8 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   priceTag: {
+    textAlign: "right",
+    fontSize: 16,
     color: colors.main,
     fontWeight: "bold",
   },
@@ -65,7 +73,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -8,
     left: -8,
-    backgroundColor: "red",
+    backgroundColor: colors.red,
     width: 24,
     height: 24,
     borderRadius: 15,

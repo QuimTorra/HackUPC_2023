@@ -23,7 +23,7 @@ export default function Grafiques() {
         }
       );
       let data = await result.json();
-      console.log("data: ", data);
+      // console.log("data: ", data);
       setInfo(data.transactions);
     };
     a();

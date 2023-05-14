@@ -16,14 +16,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName="Productes"
-        activeColor={colors.accent}
-        inactiveColor={colors.main}
-        barStyle={{ backgroundColor: "tomato" }}
+        screenOptions={{
+          tabBarStyle: { backgroundColor: colors.main },
+          tabBarActiveTintColor: colors.text,
+          tabBarInactiveTintColor: "white",
+          headerShown: false,
+        }}
       >
         <Tab.Screen
-          name="Datafon"
+          name="Pay"
           component={Datafon}
           options={{
             tabBarIcon: ({ color }) => (
@@ -36,7 +37,7 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Productes"
+          name="Products"
           component={Productes}
           options={{
             tabBarIcon: ({ color }) => (
@@ -45,12 +46,12 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Compte"
+          name="Account"
           component={Compte}
           options={{
-            tabBarIcon: ({ color }) => {
-              <MaterialCommunityIcons name="account" color={color} size={26} />;
-            },
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
           }}
         />
       </Tab.Navigator>
