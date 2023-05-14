@@ -9,7 +9,7 @@ import { colors } from "../utils/colors";
 
 export default function Datafon(props) {
   const decimalNow = useRef(false);
-  const [decimalPrice, setDecimalPrice] = useState("00");
+  const [decimalPrice, setDecimalPrice] = useState("");
   const [price, setPrice] = useState("0");
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -18,7 +18,8 @@ export default function Datafon(props) {
       if (price == "0") setPrice(newValue);
       else setPrice(price + newValue);
     } else {
-      if (decimalPrice == "00") setDecimalPrice(newValue + "0");
+      if (decimalPrice.length == 0) setDecimalPrice(newValue);
+      else if (decimalPrice.length == 1) setDecimalPrice(decimalPrice + newValue)
       else setDecimalPrice(decimalPrice.slice(0, -1) + newValue);
     }
   }
@@ -28,14 +29,12 @@ export default function Datafon(props) {
   }
 
   function deletePrevious() {
-    if (!decimalNow.current) {
+    if (!decimalNow.current || decimalPrice.length == 0) {
+      decimalNow.current = false;
       if (price.length > 1) setPrice(price.slice(0, -1));
       else if (price.length == 1 && price != "0") setPrice("0");
     } else {
-      if (decimalPrice[1] == "0") {
-        setDecimalPrice("00");
-        decimalNow.current = false;
-      } else setDecimalPrice(decimalPrice.slice(0, -1) + "0");
+        setDecimalPrice(decimalPrice.slice(0, -1));
     }
   }
 
